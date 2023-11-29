@@ -1,12 +1,16 @@
+import {ApolloProvider} from '@apollo/client';
 import React from 'react';
 
 import {Text, View} from 'react-native';
+import {client} from './service/apolloClient';
 
 function App(): JSX.Element {
   return (
-    <View>
-      <Text>Hello world</Text>
-    </View>
+    <ApolloProvider client={client}>
+      <View>
+        <Text>Hello world</Text>
+      </View>
+    </ApolloProvider>
   );
 }
 
