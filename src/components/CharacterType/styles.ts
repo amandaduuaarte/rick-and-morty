@@ -1,10 +1,16 @@
 import styled from 'styled-components/native';
 import {colors} from '../../utils/colors';
+interface ContainerProps {
+  status: string;
+}
 
-export const Container = styled.View`
+export const Container = styled.View<ContainerProps>`
   height: 40px;
   width: 80px;
-  background: ${colors.cardBackgrounds.dead};
+  background: ${({status}) =>
+    status === 'Alive'
+      ? colors.cardBackgrounds.unknown
+      : colors.cardBackgrounds.alive};
   border-radius: 8px;
   padding: 6px;
   flex-direction: row;

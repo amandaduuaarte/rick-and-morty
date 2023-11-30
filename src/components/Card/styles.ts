@@ -1,14 +1,20 @@
 import styled from 'styled-components/native';
 import {colors} from '../../utils/colors';
-
-export const Container = styled.View`
+interface ContainerProps {
+  status: string;
+}
+export const Container = styled.TouchableOpacity<ContainerProps>`
   height: 132px;
-  width: 90%;
-  background: red;
+  width: auto;
+  background: ${({status}) =>
+    status === 'Alive'
+      ? colors.cardBackgrounds.alive
+      : colors.cardBackgrounds.dead};
   border-radius: 12px;
   flex-direction: row;
   padding: 12px 16px;
   gap: 12px;
+  margin-bottom: 24px;
 `;
 
 export const DescriptionContainer = styled.View`
