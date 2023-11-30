@@ -2,8 +2,9 @@ import React from 'react';
 import {Text} from 'react-native';
 import {allcharacters} from '../../queries';
 import {useQuery} from '@apollo/client';
-import {CharacterType} from '../../components/CharacterType';
+
 import {Container} from './styles';
+import {Card} from '../../components/Card';
 
 export const Home: React.FC = () => {
   const {data} = useQuery(allcharacters);
@@ -13,7 +14,7 @@ export const Home: React.FC = () => {
   return (
     <Container>
       <Text>Hello world</Text>
-      <CharacterType label="dead" />
+      {/* <Card /> */}
       {/* {data && (
         <FlatList
           data={data.characters.results}

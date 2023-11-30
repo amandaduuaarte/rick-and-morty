@@ -3,7 +3,7 @@ import {colors} from '../../utils/colors';
 
 export const Container = styled.View`
   height: 40px;
-  width: 100px;
+  width: 80px;
   background: ${colors.cardBackgrounds.dead};
   border-radius: 8px;
   padding: 6px;
