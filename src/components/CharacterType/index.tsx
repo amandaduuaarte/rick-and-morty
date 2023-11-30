@@ -3,11 +3,15 @@ import {Container, Text} from './styles';
 
 interface CharacterTypeProps {
   label: string;
+  status: string;
 }
-export const CharacterType: React.FC<CharacterTypeProps> = ({label}) => {
+export const CharacterType: React.FC<CharacterTypeProps> = ({
+  label,
+  status,
+}) => {
   return (
     <>
-      <Container>
+      <Container status={status}>
         <Text>{label}</Text>
       </Container>
     </>

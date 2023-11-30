@@ -9,25 +9,28 @@ import {
 import {CharacterType} from '../CharacterType';
 
 interface CardProps {
-  name: string;
-  image: string;
-  type: string;
-  species: string;
+  data: {
+    name: string;
+    image: string;
+    status: string;
+    gender: string;
+  };
 }
-export const Card: React.FC<CardProps> = (data: CardProps) => {
+export const Card: React.FC<CardProps> = ({data}: CardProps) => {
   return (
     <>
-      <Container>
+      <Container status={data.status}>
         <DescriptionContainer>
           <NameCharacter>{data.name}</NameCharacter>
 
           <TypeCharacterContainer>
-            <CharacterType label={data.type} />
-            <CharacterType label={data.species} />
+            {data.gender && (
+              <CharacterType status={data.status} label={data.gender} />
+            )}
           </TypeCharacterContainer>
         </DescriptionContainer>
         <DescriptionContainer>
-          <ImageComponent source={{uri: 'https://reactjs.org/logo-og.png'}} />
+          <ImageComponent source={{uri: data.image}} />
         </DescriptionContainer>
       </Container>
     </>
