@@ -1,7 +1,9 @@
 import React from 'react';
-import {FlatList, Text, View} from 'react-native';
+import {Text} from 'react-native';
 import {allcharacters} from '../../queries';
 import {useQuery} from '@apollo/client';
+import {CharacterType} from '../../components/CharacterType';
+import {Container} from './styles';
 
 export const Home: React.FC = () => {
   const {data} = useQuery(allcharacters);
@@ -9,15 +11,16 @@ export const Home: React.FC = () => {
   console.log('aqiiiiiii', data);
 
   return (
-    <View>
+    <Container>
       <Text>Hello world</Text>
-      {data && (
+      <CharacterType label="dead" />
+      {/* {data && (
         <FlatList
           data={data.characters.results}
           renderItem={({item}) => <Text>{item.name}</Text>}
           keyExtractor={item => item.id}
         />
-      )}
-    </View>
+      )} */}
+    </Container>
   );
 };
