@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Container,
+  Description,
   DescriptionContainer,
   ImageComponent,
   NameCharacter,
@@ -14,6 +15,9 @@ interface CardProps {
     image: string;
     status: string;
     gender: string;
+    location: {
+      name: string;
+    };
   };
 }
 export const Card: React.FC<CardProps> = ({data}: CardProps) => {
@@ -22,7 +26,7 @@ export const Card: React.FC<CardProps> = ({data}: CardProps) => {
       <Container status={data.status}>
         <DescriptionContainer>
           <NameCharacter>{data.name}</NameCharacter>
-
+          <Description>{data.location.name}</Description>
           <TypeCharacterContainer>
             {data.gender && (
               <CharacterType status={data.status} label={data.gender} />
