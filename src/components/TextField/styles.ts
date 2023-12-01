@@ -18,3 +18,9 @@ export const Input = styled.TextInput`
   align-self: flex-end;
   color: ${colors.text.grayMedium};
 `;
+
+export const Image = styled.Image`
+  height: 24px;
+  width: 24px;
+  background: red;
+`;
