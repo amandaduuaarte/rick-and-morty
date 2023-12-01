@@ -1,16 +1,20 @@
 import {gql} from '@apollo/client';
 
-export const allcharacters = gql`
+export const ALL_CHARACTERS = gql`
   query {
-    characters {
+    characters(page: 1) {
       info {
         count
       }
       results {
         name
         image
-        type
+        status
+        gender
         species
+        location {
+          name
+        }
       }
     }
   }
