@@ -10,7 +10,6 @@ export const Home: React.FC = () => {
   const [value, setValue] = useState<string>('');
   const {data} = useQuery(ALL_CHARACTERS);
 
-  console.log(data);
   return (
     <Container>
       <SafeAreaView>
