@@ -8,6 +8,7 @@ import {
   TypeCharacterContainer,
 } from './styles';
 import {CharacterType} from '../CharacterType';
+import {useNavigation} from '../../hooks/useNavigation';
 
 interface CardProps {
   data: {
@@ -21,9 +22,12 @@ interface CardProps {
   };
 }
 export const Card: React.FC<CardProps> = ({data}: CardProps) => {
+  const navigation = useNavigation();
   return (
     <>
-      <Container status={data.status}>
+      <Container
+        status={data.status}
+        onPress={() => navigation.navigate('Details')}>
         <DescriptionContainer>
           <NameCharacter>{data.name}</NameCharacter>
           <Description>{data.location.name}</Description>

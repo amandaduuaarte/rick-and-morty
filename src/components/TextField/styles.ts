@@ -5,7 +5,7 @@ export const Container = styled.View`
   height: 45px;
   width: 100%;
   border-radius: 12px;
-  background: ${colors.background.grayExtraLight};
+  background: white;
   padding: 6px 12px;
   justify-content: row;
 `;
