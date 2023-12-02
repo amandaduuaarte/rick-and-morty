@@ -2,6 +2,7 @@ export const colors = {
   background: {
     white: '#FFFFFF',
     grayExtraLight: '#F2F2F2',
+    grayLight: '#B5B9C4',
   },
   text: {
     white: '#FFFFFF',
