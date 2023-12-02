@@ -1,14 +1,13 @@
 import React, {useState} from 'react';
 import {FlatList, SafeAreaView} from 'react-native';
-import {ALL_CHARACTERS} from '../../queries';
-import {useQuery} from '@apollo/client';
 
 import {Container, Content, Description, Title} from './styles';
 import {Card, TextField} from '../../components';
+import {useCharacters} from '../../hooks/useCharacters';
 
 export const Home: React.FC = () => {
   const [value, setValue] = useState<string>('');
-  const {data} = useQuery(ALL_CHARACTERS);
+  const {allCharacters} = useCharacters();
 
   return (
     <Container>
@@ -23,10 +22,10 @@ export const Home: React.FC = () => {
           value={value}
         />
         <Content>
-          {data && (
+          {allCharacters && (
             <FlatList
               showsVerticalScrollIndicator={false}
-              data={data.characters.results}
+              data={allCharacters.characters.results}
               renderItem={({item}) => <Card key={item.id} data={item} />}
               keyExtractor={item => item.id}
             />
