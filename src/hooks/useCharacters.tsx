@@ -76,8 +76,6 @@ const CharacterProvider: React.FC<ChildrenDefaultProps> = ({children}) => {
 
   const getCharacterByName = useCallback(
     async (name: string) => {
-      console.log('name', name);
-
       const {data} = await client.query({
         query: ONE_CHARACTER_BY_NAME,
         variables: {name: name},
