@@ -7,6 +7,7 @@ export const ALL_CHARACTERS = gql`
         count
       }
       results {
+        id
         name
         image
         status
@@ -15,6 +16,29 @@ export const ALL_CHARACTERS = gql`
         location {
           name
         }
+      }
+    }
+  }
+`;
+
+export const ONE_CHARACTER = gql`
+  query GetCharacter($id: ID!) {
+    character(id: $id) {
+      name
+      image
+      type
+      species
+      status
+      episode {
+        id
+        name
+        air_date
+      }
+      location {
+        name
+      }
+      origin {
+        name
       }
     }
   }

@@ -1,13 +1,13 @@
-/// aqui vou ter as functions ou os datas
 import {useQuery} from '@apollo/client';
 import React, {
   ReactNode,
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useState,
 } from 'react';
-import {ALL_CHARACTERS} from '../queries';
+import {ALL_CHARACTERS, ONE_CHARACTER} from '../queries';
 
 interface Character {
   characters: {
@@ -24,8 +24,22 @@ interface Character {
     }[];
   };
 }
+
+interface oneCharacter {
+  character: {
+    name: string;
+    image: string;
+    type: string;
+    species: string;
+    location: {
+      name: string;
+    };
+  };
+}
+
 interface CharacterContextData {
   allCharacters: Character | undefined;
+  getOneCharacter: (id: string) => oneCharacter;
 }
 
 export interface ChildrenDefaultProps {
@@ -40,6 +54,14 @@ const CharacterProvider: React.FC<ChildrenDefaultProps> = ({children}) => {
   const [allCharacters, setAllCharacters] = useState<Character | undefined>();
   const queryCharacters = useQuery(ALL_CHARACTERS);
 
+  const getOneCharacter = useCallback((id: string) => {
+    const {data} = useQuery(ONE_CHARACTER, {
+      variables: {id: id},
+    });
+    console.log(data);
+    return data;
+  }, []);
+
   useEffect(() => {
     if (queryCharacters) {
       setAllCharacters(queryCharacters.data);
@@ -47,7 +69,7 @@ const CharacterProvider: React.FC<ChildrenDefaultProps> = ({children}) => {
   }, [queryCharacters]);
 
   return (
-    <CharacterContext.Provider value={{allCharacters}}>
+    <CharacterContext.Provider value={{allCharacters, getOneCharacter}}>
       {children}
     </CharacterContext.Provider>
   );
