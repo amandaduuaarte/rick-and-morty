@@ -1,7 +1,15 @@
 import React, {useCallback, useState} from 'react';
 import {FlatList, SafeAreaView} from 'react-native';
 
-import {Container, Content, Description, Title} from './styles';
+import {
+  Container,
+  Content,
+  Description,
+  Page,
+  PageContainer,
+  PaginationContainer,
+  Title,
+} from './styles';
 import {Card, Loading, TextField} from '../../components';
 import {useCharacters} from '../../hooks/useCharacters';
 
@@ -23,8 +31,11 @@ interface Character {
 export const Home: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [value, setValue] = useState<string>('');
-  const {allCharacters, getCharacterByName} = useCharacters();
-  const [charactersFilter, setCharactersFilter] = useState<Character>();
+  const [page, setPage] = useState(1);
+  // const nextPageIdentifierRef = useRef();
+  const {allCharacters, getCharacterByName, handleMoreCharacters} =
+    useCharacters();
+  const [charactersFilter, setCharactersFilter] = useState<Character | any>();
 
   const handleSearch = useCallback(
     async (e: string) => {
@@ -40,6 +51,16 @@ export const Home: React.FC = () => {
     [getCharacterByName],
   );
 
+  const handlePagination = async (pageValue: number) => {
+    setLoading(true);
+    try {
+      setPage(pageValue < 1 ? 1 : pageValue);
+      await handleMoreCharacters(pageValue);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <Container>
       <SafeAreaView>
@@ -52,31 +73,43 @@ export const Home: React.FC = () => {
           callBack={e => handleSearch(e)}
           value={value}
         />
-
-        {loading && (
+      </SafeAreaView>
+      <Content>
+        {allCharacters && !loading ? (
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            onEndReachedThreshold={0.1}
+            data={
+              charactersFilter
+                ? charactersFilter?.characters.results
+                : allCharacters
+            }
+            ListEmptyComponent={
+              loading ? (
+                <Content>
+                  <Loading />
+                </Content>
+              ) : null
+            }
+            renderItem={({item}) => <Card key={item.id} data={item} />}
+            keyExtractor={item => item.id + Math.random()}
+            ListFooterComponent={loading ? <Loading /> : null}
+          />
+        ) : (
           <Content>
             <Loading />
           </Content>
         )}
-        <Content>
-          {allCharacters ? (
-            <FlatList
-              showsVerticalScrollIndicator={false}
-              data={
-                charactersFilter
-                  ? charactersFilter?.characters.results
-                  : allCharacters?.characters.results
-              }
-              renderItem={({item}) => <Card key={item.id} data={item} />}
-              keyExtractor={item => item.id}
-            />
-          ) : (
-            <Content>
-              <Loading />
-            </Content>
-          )}
-        </Content>
-      </SafeAreaView>
+      </Content>
+      <PaginationContainer>
+        <PageContainer onPress={() => handlePagination(page - 1)} />
+        <PageContainer onPress={() => handlePagination(1)} isActive>
+          <Page size={12} isActive>
+            {page <= 1 ? '1' : page}
+          </Page>
+        </PageContainer>
+        <PageContainer onPress={() => handlePagination(page + 1)} />
+      </PaginationContainer>
     </Container>
   );
 };
