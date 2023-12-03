@@ -43,3 +43,21 @@ export const ONE_CHARACTER = gql`
     }
   }
 `;
+
+export const ONE_CHARACTER_BY_NAME = gql`
+  query GetCharacters($name: String!) {
+    characters(filter: {name: $name}) {
+      results {
+        id
+        name
+        image
+        status
+        gender
+        species
+        location {
+          name
+        }
+      }
+    }
+  }
+`;
