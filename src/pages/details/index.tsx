@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   BackContainer,
   BackIcon,
@@ -6,62 +6,140 @@ import {
   Container,
   Content,
   Description,
+  EpListContainer,
   Header,
   Image,
+  Item,
+  ItensContainer,
   Line,
   Topics,
 } from './styles';
 import Back from '../../assets/icons/Back.png';
 import {useNavigation} from '../../hooks/useNavigation';
 import {colors} from '../../utils/colors';
+
+import {useRoute} from '@react-navigation/native';
+interface CharacterProps {
+  name: string;
+  image: string;
+  type: string;
+  status: string;
+  species: string;
+  color: string;
+  episode: {
+    id: string;
+    name: string;
+    air_date: string;
+  }[];
+  origin: {
+    name: string;
+  };
+}
+
 export const Details: React.FC = () => {
+  const [tab, setTap] = useState<'about' | 'episodes'>('about');
   const navigation = useNavigation();
+  const route = useRoute<any>();
+  const {character}: {character: CharacterProps} = route.params;
+
   return (
-    <Container>
+    <Container backgroundColor={character.color}>
       <BackContainer onPress={() => navigation.goBack()}>
         <BackIcon source={Back} />
       </BackContainer>
       <Header>
-        <Image />
+        <Image source={{uri: character?.image}} />
         <CharacterInformation>
           <Description size={24} bold color={colors.text.white}>
-            Name
+            {character?.name}
           </Description>
-          <Description size={16} color={colors.text.white}>
-            species - Human
+          <Description size={18} color={colors.text.white}>
+            species - {character?.species}
           </Description>
         </CharacterInformation>
       </Header>
-      <Content>
-        <Description>
-          texto de explicacao: Bulbasaur can be seen napping in bright sunlight.
-          There is a seed on its back. By soaking up the sun's rays, the seed
-          grows progressively larger.
-        </Description>
 
-        <Topics>
-          <Line>
-            <Description bold>Last known location:</Description>
-            <Description>location </Description>
-          </Line>
+      <ItensContainer>
+        <Item onPress={() => setTap('about')}>
+          <Description
+            bold
+            size={16}
+            color={
+              tab === 'about'
+                ? colors.text.white
+                : colors.cardBackgrounds.unknown
+            }>
+            About
+          </Description>
+        </Item>
 
-          <Line>
-            <Description bold>origin:</Description>
-            <Description>Earth</Description>
-          </Line>
+        <Item onPress={() => setTap('episodes')}>
+          <Description
+            bold
+            size={16}
+            color={
+              tab === 'episodes'
+                ? colors.text.white
+                : colors.cardBackgrounds.unknown
+            }>
+            Episodes
+          </Description>
+        </Item>
+      </ItensContainer>
 
-          <Line>
-            <Description bold>status:</Description>
-            <Description>Alive</Description>
-          </Line>
+      {tab === 'about' ? (
+        <Content showsVerticalScrollIndicator={false}>
+          <Description size={18}>
+            Here are the details of the character {character.name}. This is a{' '}
+            {character.species}{' '}
+            {character.type ? `of type ${character.type}` : ''} who is currently{' '}
+            {character.status}.
+          </Description>
 
-          <Line>
-            <Description bold>First seen in:</Description>
-            <Description>Alive</Description>
-          </Line>
-        </Topics>
-        <Description>Epsodes:</Description>
-      </Content>
+          <Topics>
+            <Line>
+              <Description bold color={character.color}>
+                origin:
+              </Description>
+              <Description>{character?.origin.name}</Description>
+            </Line>
+
+            <Line>
+              <Description bold color={character.color}>
+                status:
+              </Description>
+              <Description>{character?.status}</Description>
+            </Line>
+
+            <Line>
+              <Description bold color={character.color}>
+                First seen in:
+              </Description>
+              <Description>{character?.episode[0].name}</Description>
+            </Line>
+          </Topics>
+        </Content>
+      ) : (
+        <Content showsVerticalScrollIndicator={false}>
+          <Description size={18}>
+            Here are the details of the episodes in which the character appears.
+          </Description>
+
+          <EpListContainer>
+            <Description bold size={22}>
+              Episodes:
+            </Description>
+            {character?.episode.map(episode => {
+              return (
+                <Line>
+                  <Description size={14}>{episode.name}</Description>
+                  <Description size={12}>{episode.air_date}</Description>
+                </Line>
+              );
+            })}
+          </EpListContainer>
+        </Content>
+      )}
     </Container>
   );
 };

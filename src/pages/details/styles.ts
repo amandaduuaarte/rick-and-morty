@@ -34,10 +34,9 @@ export const Header = styled.View`
   gap: 12px;
 `;
 
-export const Image = styled.View`
+export const Image = styled.Image`
   height: 90px;
   width: 90px;
-  background: black;
   border-radius: 12px;
 `;
 
@@ -47,7 +46,18 @@ export const CharacterInformation = styled.View`
   justify-content: center;
 `;
 
-export const Content = styled.View`
+export const ItensContainer = styled.View`
+  height: 24px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 24px;
+`;
+
+export const Item = styled.TouchableOpacity``;
+
+export const Content = styled.ScrollView`
   width: 100%;
   height: 80%;
   padding: 24px;
@@ -60,7 +70,6 @@ export const Description = styled.Text<DescriptionProps>`
   font-size: ${({size}) => size || 16}px;
   font-family: ${({bold}) => (bold ? 'Roboto-bold' : 'Roboto-regular')};
   color: ${({color}) => color || colors.text.grayMedium};
-  text-align: 'flex-start';
 `;
 
 export const Topics = styled.View`
@@ -71,4 +80,10 @@ export const Topics = styled.View`
 export const Line = styled.View`
   flex-direction: row;
   justify-content: space-between;
+`;
+
+export const EpListContainer = styled.View`
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
 `;
