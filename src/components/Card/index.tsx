@@ -27,9 +27,10 @@ interface CardProps {
 export const Card: React.FC<CardProps> = ({data}: CardProps) => {
   const navigation = useNavigation();
   const {getOneCharacter} = useCharacters();
-  const {character} = getOneCharacter(data.id);
 
-  const handleCharacter = useCallback(() => {
+  const handleCharacter = useCallback(async () => {
+    const {character} = await getOneCharacter(data.id);
+
     if (character) {
       const characterDetails = {
         ...character,
@@ -41,7 +42,7 @@ export const Card: React.FC<CardProps> = ({data}: CardProps) => {
 
       navigation.navigate('Details', {character: characterDetails});
     }
-  }, [character, navigation]);
+  }, [data, getOneCharacter, navigation]);
 
   return (
     <>
