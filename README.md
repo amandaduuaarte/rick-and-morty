@@ -1,13 +1,53 @@
-### Na home: 
-vai ser exibido os cards com os personagens
-   * cada card vai ter Image, nome, type e species.
-   * Com base no status vou definir a cor.
+<div align="center">
+<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="ReactJS"> 
+<h2 align="center">Rick and Morty GraphQL App : </h2>
+</div>
+Este é um aplicativo móvel desenvolvido em React Native que utiliza a API GraphQL do Rick and Morty para exibir informações sobre personagens, episódios e locais da série.
+
+## Sobre o projeto: 
+
+<!-- Adicionar imagens/gifs-->
+## Configuração
+- Pré-requisitos
+    * Node.js
+    * npm ou Yarn
+    * Dispositivo móvel ou emulador configurado para execução do aplicativo
+- Instalação
+    * Clone este repositório: git clone [rick-and-morty](https://github.com/amandaduuaarte/rick-and-morty)
+    * Acesse o diretório do projeto: cd nome-do-repositorio
+    * Instale as dependências: npm install ou yarn install
+    * Executando a aplicação
+    * Para executar o aplicativo, utilize os seguintes comandos:
+
+- iOS:
+    * `npx react-native run-ios`
+
+- Android:
+    * `npx react-native run-android`
+ 
+  
+### Funcionalidades
+- Personagens
+    * Lista de personagens com informações detalhadas
+    * Detalhes individuais de cada personagem
+    * Pesquisa por nome de personagem
+- Episódios
+Lista de episódios de acordo com o personagem
 
 
+### Tecnologias Utilizadas
+  * React Native
+  * Apollo Client para GraphQL
+  * Styled Components para estilização  
+  * React Navigation para navegação entre telas
 
--> Sabendo que nao vou usar muitos icons decidi nao usar nenhuma
-lib com o react-native-vector icons já que uma grande 
-quantidade de libs pode prejudicar a performance do app
+### Estrutura do projeto e decisoes tomadas:
+[Estrutura](./STRUCTURE.MD) aqui temos um compilado de informações que server como facilitador para quem deseja enteder a estrutura de pastas do projeto e algumas breves explicações de decisões tomadas durante o desenvolvimento.
 
+### Contribuição
+Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request para melhorias no código, novas funcionalidades ou correções de bugs.
 
-validar se vou add o icon no input vai ser um svg
+Autores
+Seu Nome (@amandaduuaarte)
+Licença
+Este projeto está sob a licença [MIT].
