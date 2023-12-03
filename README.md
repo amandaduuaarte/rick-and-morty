@@ -42,7 +42,7 @@ Lista de episódios de acordo com o personagem
   * React Navigation para navegação entre telas
 
 ### Estrutura do projeto e decisoes tomadas:
-[Estrutura](./STRUCTURE.MD) aqui temos um compilado de informações que server como facilitador para quem deseja enteder a estrutura de pastas do projeto e algumas breves explicações de decisões tomadas durante o desenvolvimento.
+[Estrutura](./STRUCTURE.md) aqui temos um compilado de informações que server como facilitador para quem deseja enteder a estrutura de pastas do projeto e algumas breves explicações de decisões tomadas durante o desenvolvimento.
 
 ### Contribuição
 Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request para melhorias no código, novas funcionalidades ou correções de bugs.
