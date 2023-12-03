@@ -9,9 +9,8 @@ import {
 } from './styles';
 import {CharacterType} from '../CharacterType';
 import {useNavigation} from '../../hooks/useNavigation';
-import {useQuery} from '@apollo/client';
-import {ONE_CHARACTER} from '../../queries';
 import {colors} from '../../utils/colors';
+import {useCharacters} from '../../hooks/useCharacters';
 
 interface CardProps {
   data: {
@@ -27,25 +26,21 @@ interface CardProps {
 }
 export const Card: React.FC<CardProps> = ({data}: CardProps) => {
   const navigation = useNavigation();
-  const {data: character} = useQuery(ONE_CHARACTER, {
-    variables: {id: data.id},
-  });
+  const {getOneCharacter} = useCharacters();
+  const {character} = getOneCharacter(data.id);
 
   const handleCharacter = useCallback(() => {
     if (character) {
-      const characterData = character.character;
-      console.log(characterData.episode[0]);
       const characterDetails = {
-        ...characterData,
+        ...character,
         color:
-          characterData.status === 'Alive'
+          character.status === 'Alive'
             ? colors.cardBackgrounds.alive
             : colors.cardBackgrounds.dead,
       };
 
       navigation.navigate('Details', {character: characterDetails});
     }
-    console.log(character.character.image);
   }, [character, navigation]);
 
   return (

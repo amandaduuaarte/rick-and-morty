@@ -30,8 +30,15 @@ interface oneCharacter {
     name: string;
     image: string;
     type: string;
+    status: string;
     species: string;
-    location: {
+    color: string;
+    episode: {
+      id: string;
+      name: string;
+      air_date: string;
+    }[];
+    origin: {
       name: string;
     };
   };
