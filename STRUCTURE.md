@@ -25,8 +25,8 @@ Algumas pastas como a `@types` são por si só explicativas não sendo necessár
     -  src é a pasta source de aplicação contendo todas as outras pastas citadas anteriormente.
     </br>
 
-- service: 
-    -  A service ficou com a responsabilidade de lidar com a implementação do apollo, gerando assim a const client.
+- service: 🤖
+   -  A service ficou com a responsabilidade de lidar com a implementação do apollo, gerando assim a const client.
     </br>
 
 - components: 🤓
