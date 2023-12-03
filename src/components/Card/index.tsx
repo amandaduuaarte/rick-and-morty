@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useState} from 'react';
 import {
   Container,
   Description,
@@ -11,6 +11,7 @@ import {CharacterType} from '../CharacterType';
 import {useNavigation} from '../../hooks/useNavigation';
 import {colors} from '../../utils/colors';
 import {useCharacters} from '../../hooks/useCharacters';
+import {Loading} from '../Loading';
 
 interface CardProps {
   data: {
@@ -25,10 +26,12 @@ interface CardProps {
   };
 }
 export const Card: React.FC<CardProps> = ({data}: CardProps) => {
+  const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
   const {getOneCharacter} = useCharacters();
 
   const handleCharacter = useCallback(async () => {
+    setLoading(true);
     const {character} = await getOneCharacter(data.id);
 
     if (character) {
@@ -41,24 +44,37 @@ export const Card: React.FC<CardProps> = ({data}: CardProps) => {
       };
 
       navigation.navigate('Details', {character: characterDetails});
+      setLoading(false);
     }
   }, [data, getOneCharacter, navigation]);
 
   return (
     <>
       <Container status={data.status} onPress={() => handleCharacter()}>
-        <DescriptionContainer>
-          <NameCharacter>{data.name}</NameCharacter>
-          <Description>{data.location.name}</Description>
-          <TypeCharacterContainer>
-            {data.gender && (
-              <CharacterType status={data.status} label={data.gender} />
-            )}
-          </TypeCharacterContainer>
-        </DescriptionContainer>
-        <DescriptionContainer>
-          <ImageComponent source={{uri: data.image}} />
-        </DescriptionContainer>
+        {loading ? (
+          <Loading
+            color={
+              data.status === 'Alive'
+                ? colors.background.blueDark
+                : colors.cardBackgrounds.alive
+            }
+          />
+        ) : (
+          <>
+            <DescriptionContainer>
+              <NameCharacter>{data.name}</NameCharacter>
+              <Description>{data.location.name}</Description>
+              <TypeCharacterContainer>
+                {data.gender && (
+                  <CharacterType status={data.status} label={data.gender} />
+                )}
+              </TypeCharacterContainer>
+            </DescriptionContainer>
+            <DescriptionContainer>
+              <ImageComponent source={{uri: data.image}} />
+            </DescriptionContainer>
+          </>
+        )}
       </Container>
     </>
   );

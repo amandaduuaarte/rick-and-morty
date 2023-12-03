@@ -3,6 +3,7 @@ export const colors = {
     white: '#FFFFFF',
     grayExtraLight: '#F2F2F2',
     grayLight: '#B5B9C4',
+    blueDark: '#417D9A',
   },
   text: {
     white: '#FFFFFF',
