@@ -6,7 +6,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import {ALL_CHARACTERS, ONE_CHARACTER} from '../queries';
+import {ALL_CHARACTERS, ONE_CHARACTER, ONE_CHARACTER_BY_NAME} from '../queries';
 
 interface Character {
   characters: {
@@ -46,6 +46,7 @@ interface oneCharacter {
 interface CharacterContextData {
   allCharacters: Character | undefined;
   getOneCharacter(id: string): Promise<oneCharacter>;
+  getCharacterByName(name: string): Promise<Character>;
 }
 
 export interface ChildrenDefaultProps {
@@ -66,7 +67,17 @@ const CharacterProvider: React.FC<ChildrenDefaultProps> = ({children}) => {
       query: ONE_CHARACTER,
       variables: {id: id},
     });
-    console.log(data);
+    return data;
+  };
+
+  const getCharacterByName = async (name: string) => {
+    console.log('name', name);
+
+    const {data} = await client.query({
+      query: ONE_CHARACTER_BY_NAME,
+      variables: {name: name},
+    });
+
     return data;
   };
 
@@ -77,7 +88,8 @@ const CharacterProvider: React.FC<ChildrenDefaultProps> = ({children}) => {
   }, [queryCharacters]);
 
   return (
-    <CharacterContext.Provider value={{allCharacters, getOneCharacter}}>
+    <CharacterContext.Provider
+      value={{allCharacters, getOneCharacter, getCharacterByName}}>
       {children}
     </CharacterContext.Provider>
   );

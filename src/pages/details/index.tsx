@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react';
+import React, {useState} from 'react';
 import {
   BackContainer,
   BackIcon,
@@ -129,11 +129,15 @@ export const Details: React.FC = () => {
             <Description bold size={22}>
               Episodes:
             </Description>
-            {character?.episode.map(episode => {
+            {character?.episode.map((episode, index) => {
               return (
                 <Line>
-                  <Description size={14}>{episode.name}</Description>
-                  <Description size={12}>{episode.air_date}</Description>
+                  <Description size={14} key={index}>
+                    {episode.name}
+                  </Description>
+                  <Description size={12} key={index + Math.random()}>
+                    {episode.air_date}
+                  </Description>
                 </Line>
               );
             })}
