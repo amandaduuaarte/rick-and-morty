@@ -84,6 +84,11 @@ export const Line = styled.View`
 
 export const EpListContainer = styled.View`
   justify-content: space-between;
+  height: 100%;
   gap: 12px;
-  margin-top: 12px;
+`;
+
+export const List = styled.View`
+  height: 100%;
+  margin-bottom: 24%;
 `;

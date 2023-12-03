@@ -12,6 +12,7 @@ import {
   Item,
   ItensContainer,
   Line,
+  List,
   Topics,
 } from './styles';
 import Back from '../../assets/icons/Back.png';
@@ -129,14 +130,16 @@ export const Details: React.FC = () => {
             <Description bold size={22}>
               Episodes:
             </Description>
-            {character?.episode.map((episode, index) => {
-              return (
-                <Line key={index}>
-                  <Description size={14}>{episode.name}</Description>
-                  <Description size={12}>{episode.air_date}</Description>
-                </Line>
-              );
-            })}
+            <List>
+              {character?.episode.map((episode, index) => {
+                return (
+                  <Line key={index}>
+                    <Description size={14}>{episode.name}</Description>
+                    <Description size={12}>{episode.air_date}</Description>
+                  </Line>
+                );
+              })}
+            </List>
           </EpListContainer>
         </Content>
       )}
