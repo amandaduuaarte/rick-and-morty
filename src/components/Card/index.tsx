@@ -25,7 +25,7 @@ interface CardProps {
     };
   };
 }
-export const Card: React.FC<CardProps> = ({data}: CardProps) => {
+export const Card: React.FC<CardProps> = React.memo(({data}: CardProps) => {
   const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
   const {getOneCharacter} = useCharacters();
@@ -78,4 +78,4 @@ export const Card: React.FC<CardProps> = ({data}: CardProps) => {
       </Container>
     </>
   );
-};
+});
