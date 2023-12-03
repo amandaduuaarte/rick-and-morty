@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {FlatList, SafeAreaView} from 'react-native';
 
 import {Container, Content, Description, Title} from './styles';
-import {Card, TextField} from '../../components';
+import {Card, Loading, TextField} from '../../components';
 import {useCharacters} from '../../hooks/useCharacters';
 
 export const Home: React.FC = () => {
@@ -22,13 +22,15 @@ export const Home: React.FC = () => {
           value={value}
         />
         <Content>
-          {allCharacters && (
+          {allCharacters ? (
             <FlatList
               showsVerticalScrollIndicator={false}
               data={allCharacters.characters.results}
               renderItem={({item}) => <Card key={item.id} data={item} />}
               keyExtractor={item => item.id}
             />
+          ) : (
+            <Loading />
           )}
         </Content>
       </SafeAreaView>
