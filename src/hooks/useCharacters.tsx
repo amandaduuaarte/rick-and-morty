@@ -1,8 +1,7 @@
-import {useQuery} from '@apollo/client';
+import {useApolloClient, useQuery} from '@apollo/client';
 import React, {
   ReactNode,
   createContext,
-  useCallback,
   useContext,
   useEffect,
   useState,
@@ -46,7 +45,7 @@ interface oneCharacter {
 
 interface CharacterContextData {
   allCharacters: Character | undefined;
-  getOneCharacter: (id: string) => oneCharacter;
+  getOneCharacter(id: string): Promise<oneCharacter>;
 }
 
 export interface ChildrenDefaultProps {
@@ -60,14 +59,16 @@ const CharacterContext = createContext<CharacterContextData>(
 const CharacterProvider: React.FC<ChildrenDefaultProps> = ({children}) => {
   const [allCharacters, setAllCharacters] = useState<Character | undefined>();
   const queryCharacters = useQuery(ALL_CHARACTERS);
+  const client = useApolloClient();
 
-  const getOneCharacter = useCallback((id: string) => {
-    const {data} = useQuery(ONE_CHARACTER, {
+  const getOneCharacter = async (id: string) => {
+    const {data} = await client.query({
+      query: ONE_CHARACTER,
       variables: {id: id},
     });
     console.log(data);
     return data;
-  }, []);
+  };
 
   useEffect(() => {
     if (queryCharacters) {

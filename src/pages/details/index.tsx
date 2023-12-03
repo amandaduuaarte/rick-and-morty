@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useMemo, useState} from 'react';
 import {
   BackContainer,
   BackIcon,
@@ -90,29 +90,29 @@ export const Details: React.FC = () => {
       {tab === 'about' ? (
         <Content showsVerticalScrollIndicator={false}>
           <Description size={18}>
-            Here are the details of the character {character.name}. This is a{' '}
-            {character.species}{' '}
-            {character.type ? `of type ${character.type}` : ''} who is currently{' '}
-            {character.status}.
+            Here are the details of the character {character?.name}. This is a{' '}
+            {character?.species}{' '}
+            {character?.type ? `of type ${character?.type}` : ''} who is
+            currently {character?.status}.
           </Description>
 
           <Topics>
             <Line>
-              <Description bold color={character.color}>
+              <Description bold color={character?.color}>
                 origin:
               </Description>
               <Description>{character?.origin.name}</Description>
             </Line>
 
             <Line>
-              <Description bold color={character.color}>
+              <Description bold color={character?.color}>
                 status:
               </Description>
               <Description>{character?.status}</Description>
             </Line>
 
             <Line>
-              <Description bold color={character.color}>
+              <Description bold color={character?.color}>
                 First seen in:
               </Description>
               <Description>{character?.episode[0].name}</Description>
