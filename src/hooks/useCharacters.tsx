@@ -8,42 +8,12 @@ import React, {
   useState,
 } from 'react';
 import {ALL_CHARACTERS, ONE_CHARACTER, ONE_CHARACTER_BY_NAME} from '../queries';
-
-interface Character {
-  id: string;
-  name: string;
-  image: string;
-  status: string;
-  gender: string;
-  species: string;
-  location: {
-    name: string;
-  }[];
-}
-
-interface oneCharacter {
-  character: {
-    name: string;
-    image: string;
-    type: string;
-    status: string;
-    species: string;
-    color: string;
-    episode: {
-      id: string;
-      name: string;
-      air_date: string;
-    }[];
-    origin: {
-      name: string;
-    };
-  };
-}
+import {CharacterDetails, Characters} from '../models/characters';
 
 interface CharacterContextData {
-  allCharacters: Character | undefined;
-  getOneCharacter(id: string): Promise<oneCharacter>;
-  getCharacterByName(name: string): Promise<Character>;
+  allCharacters: Characters | undefined;
+  getOneCharacter(id: string): Promise<CharacterDetails>;
+  getCharacterByName(name: string): Promise<Characters | undefined>;
   handleMoreCharacters(pageNumber: number): void;
 }
 
@@ -56,7 +26,7 @@ const CharacterContext = createContext<CharacterContextData>(
 );
 
 const CharacterProvider: React.FC<ChildrenDefaultProps> = ({children}) => {
-  const [allCharacters, setAllCharacters] = useState<Character | any>();
+  const [allCharacters, setAllCharacters] = useState<Characters>();
 
   const {data: queryCharacters} = useQuery(ALL_CHARACTERS, {
     variables: {page: 1},
@@ -69,7 +39,7 @@ const CharacterProvider: React.FC<ChildrenDefaultProps> = ({children}) => {
         query: ONE_CHARACTER,
         variables: {id: id},
       });
-      return data;
+      return data.character;
     },
     [client],
   );
@@ -81,7 +51,7 @@ const CharacterProvider: React.FC<ChildrenDefaultProps> = ({children}) => {
         variables: {name: name},
       });
 
-      return data;
+      return data.characters.results;
     },
     [client],
   );

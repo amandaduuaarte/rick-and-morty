@@ -1,11 +1,8 @@
-import {
-  ApolloClient,
-  InMemoryCache,
-  NormalizedCacheObject,
-} from '@apollo/client';
+import {ApolloClient, InMemoryCache} from '@apollo/client';
 import {BASE_URL} from './contants';
+import {Apollo} from '../models/apollo';
 
-export const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
+export const client: Apollo = new ApolloClient({
   uri: BASE_URL,
   cache: new InMemoryCache(),
 });
