@@ -8,12 +8,12 @@ Este é um aplicativo móvel desenvolvido em React Native que utiliza a API Grap
 ## Sobre o projeto: 
 
 <div align="center">
-<img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/homeAndroid.png" alt="androidScreen"> 
+<img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/homeAndroid.png" alt="androidScreen" height="400px"> 
 <p align="center">Android</p>
 </div>
 
 <div align="center">
-<img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/homeIos.png" alt="iosScreen"> 
+<img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/homeIos.png" alt="iosScreen" height="400px"> 
 <p align="center">Ios</p>
 </div>
 <!-- Adicionar imagens/gifs-->
