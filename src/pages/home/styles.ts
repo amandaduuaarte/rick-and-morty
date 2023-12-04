@@ -1,6 +1,8 @@
 import styled from 'styled-components/native';
 import {colors} from '../../utils/colors';
+import {Dimensions} from 'react-native';
 
+const {height} = Dimensions.get('window');
 interface DescriptionProps {
   size?: number;
   isActive?: boolean;
@@ -31,7 +33,7 @@ export const Description = styled.Text<DescriptionProps>`
 
 export const Content = styled.View`
   margin: 24px 0;
-  height: 70%;
+  height: ${height > 700 ? 70 : 55}%;
 `;
 
 export const PaginationContainer = styled.View`
