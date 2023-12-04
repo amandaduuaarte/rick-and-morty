@@ -13,7 +13,7 @@ export const Container = styled.View`
 export const Input = styled.TextInput`
   height: 100%;
   width: 90%;
-  font-size: 14px;
+  font-size: 12px;
   font-family: 'Roboto-medium';
   align-self: flex-end;
   color: ${colors.text.grayMedium};
