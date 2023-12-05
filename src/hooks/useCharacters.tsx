@@ -1,6 +1,5 @@
 import {useApolloClient, useQuery} from '@apollo/client';
 import React, {
-  ReactNode,
   createContext,
   useCallback,
   useContext,
@@ -9,16 +8,13 @@ import React, {
 } from 'react';
 import {ALL_CHARACTERS, ONE_CHARACTER, ONE_CHARACTER_BY_NAME} from '../queries';
 import {CharacterDetails, Characters} from '../models/characters';
+import {ChildrenDefaultProps} from '../models/children';
 
 interface CharacterContextData {
   allCharacters: Characters | undefined;
   getOneCharacter(id: string): Promise<CharacterDetails>;
   getCharacterByName(name: string): Promise<Characters | undefined>;
   handleMoreCharacters(pageNumber: number): void;
-}
-
-export interface ChildrenDefaultProps {
-  children?: ReactNode;
 }
 
 const CharacterContext = createContext<CharacterContextData>(
