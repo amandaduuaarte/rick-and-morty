@@ -5,12 +5,15 @@ import {client} from './service/apolloClient';
 
 import {Routes} from './routes/app.routes';
 import {CharacterProvider} from './hooks/useCharacters';
+import {ThemeProvider} from './theme/theme';
 
 function App(): JSX.Element {
   return (
     <ApolloProvider client={client}>
       <CharacterProvider>
-        <Routes />
+        <ThemeProvider>
+          <Routes />
+        </ThemeProvider>
       </CharacterProvider>
     </ApolloProvider>
   );

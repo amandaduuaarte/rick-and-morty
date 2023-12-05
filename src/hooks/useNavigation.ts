@@ -1,9 +1,6 @@
-import {
-  useNavigation as useNav,
-  NavigationProp,
-  ParamListBase,
-} from '@react-navigation/native';
+import {useNavigation as useNav} from '@react-navigation/native';
+import {NavigationParamListBase} from '../models/navigation';
 
-export function useNavigation(): NavigationProp<ParamListBase> {
-  return useNav<NavigationProp<ParamListBase>>();
+export function useNavigation(): NavigationParamListBase {
+  return useNav<NavigationParamListBase>();
 }
