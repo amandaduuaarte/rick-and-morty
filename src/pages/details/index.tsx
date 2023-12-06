@@ -17,9 +17,9 @@ import {
 } from './styles';
 import Back from '../../assets/icons/Back.png';
 import {useNavigation} from '../../hooks/useNavigation';
-import {colors} from '../../utils/colors';
 
 import {useRoute} from '@react-navigation/native';
+import {useTheme} from 'styled-components/native';
 interface CharacterProps {
   name: string;
   image: string;
@@ -41,6 +41,7 @@ export const Details: React.FC = () => {
   const [tab, setTap] = useState<'about' | 'episodes'>('about');
   const navigation = useNavigation();
   const route = useRoute<any>();
+  const {colors} = useTheme();
   const {character}: {character: CharacterProps} = route.params;
 
   return (
@@ -51,10 +52,10 @@ export const Details: React.FC = () => {
       <Header>
         <Image source={{uri: character?.image}} />
         <CharacterInformation>
-          <Description size={24} bold color={colors.text.white}>
+          <Description size={24} bold color={colors.clean}>
             {character?.name}
           </Description>
-          <Description size={18} color={colors.text.white}>
+          <Description size={18} color={colors.clean}>
             species - {character?.species}
           </Description>
         </CharacterInformation>
@@ -65,11 +66,7 @@ export const Details: React.FC = () => {
           <Description
             bold
             size={16}
-            color={
-              tab === 'about'
-                ? colors.text.white
-                : colors.cardBackgrounds.unknown
-            }>
+            color={tab === 'about' ? colors.clean : colors.unknown}>
             About
           </Description>
         </Item>
@@ -78,11 +75,7 @@ export const Details: React.FC = () => {
           <Description
             bold
             size={16}
-            color={
-              tab === 'episodes'
-                ? colors.text.white
-                : colors.cardBackgrounds.unknown
-            }>
+            color={tab === 'episodes' ? colors.clean : colors.unknown}>
             Episodes
           </Description>
         </Item>

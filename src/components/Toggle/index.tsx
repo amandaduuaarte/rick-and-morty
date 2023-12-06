@@ -12,8 +12,8 @@ export const Toggle: React.FC<ToggleProps> = ({callback, value}) => {
   return (
     <Container>
       <Switch
-        trackColor={{false: colors.background.blueDark, true: '#81b0ff'}}
-        thumbColor={value ? colors.background.blueDark : '#f4f3f4'}
+        trackColor={{false: colors.black, true: '#81b0ff'}}
+        thumbColor={value ? colors.blueDark : '#f4f3f4'}
         ios_backgroundColor="#3e3e3e"
         onValueChange={callback}
         value={value}

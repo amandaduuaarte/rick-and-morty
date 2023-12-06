@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-import {colors} from '../../utils/colors';
 
 interface ContainerProp {
   backgroundColor?: string;
@@ -12,7 +11,8 @@ interface DescriptionProps {
 
 export const Container = styled.View<ContainerProp>`
   flex: 1;
-  background: ${({backgroundColor}) => backgroundColor || 'red'};
+  background: ${({backgroundColor, theme}) =>
+    backgroundColor || theme.colors.primary};
 `;
 
 export const BackContainer = styled.Pressable``;
@@ -61,7 +61,7 @@ export const Content = styled.ScrollView`
   width: 100%;
   height: 80%;
   padding: 24px;
-  background: ${colors.background.white};
+  background: ${({theme}) => theme.colors.grayExtraLight};
   align-self: flex-end;
   border-radius: 32px;
 `;
@@ -69,7 +69,7 @@ export const Content = styled.ScrollView`
 export const Description = styled.Text<DescriptionProps>`
   font-size: ${({size}) => size || 16}px;
   font-family: ${({bold}) => (bold ? 'Roboto-bold' : 'Roboto-regular')};
-  color: ${({color}) => color || colors.text.grayMedium};
+  color: ${({theme, color}) => color || theme.colors.grayMedium};
 `;
 
 export const Topics = styled.View`

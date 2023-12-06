@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-import {colors} from '../../utils/colors';
 import {Dimensions} from 'react-native';
 
 const {height} = Dimensions.get('window');
@@ -15,19 +14,19 @@ interface PaginationContainerProps {
 export const Container = styled.View`
   flex: 1;
   padding: 24px;
-  margin-top: 32px;
+  background-color: ${({theme}) => theme.colors.primary};
 `;
 
 export const Title = styled.Text`
   font-size: 24px;
   font-family: 'Roboto-bold';
-  color: ${colors.text.black};
+  color: ${({theme}) => theme.colors.unknown};
 `;
 
 export const Description = styled.Text<DescriptionProps>`
   font-size: ${({size}) => size || 16}px;
   font-family: 'Roboto-regular';
-  color: ${colors.text.grayMedium};
+  color: ${({theme}) => theme.colors.grayMedium};
   margin: 12px 0;
 `;
 
@@ -48,17 +47,17 @@ export const PaginationContainer = styled.View`
 export const PageContainer = styled.TouchableOpacity<PaginationContainerProps>`
   height: 32px;
   width: 32px;
-  border: 2px solid ${colors.cardBackgrounds.unknown};
+  border: 2px solid ${({theme}) => theme.colors.unknown};
   border-radius: 16px;
   justify-content: center;
   align-items: center;
-  background: ${({isActive}) =>
-    isActive ? colors.cardBackgrounds.unknown : 'transparent'};
+  background: ${({theme, isActive}) =>
+    isActive ? theme.colors.unknown : 'transparent'};
 `;
 
 export const Page = styled.Text<DescriptionProps>`
   font-size: ${({size}) => size || 16}px;
   font-family: 'Roboto-regular';
-  color: ${({isActive}) =>
-    isActive ? colors.text.white : colors.text.grayMedium};
+  color: ${({theme, isActive}) =>
+    isActive ? theme.colors.clean : theme.colors.grayMedium};
 `;

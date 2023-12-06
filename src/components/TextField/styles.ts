@@ -1,11 +1,10 @@
 import styled from 'styled-components/native';
-import {colors} from '../../utils/colors';
 
 export const Container = styled.View`
   height: 45px;
   width: 100%;
   border-radius: 12px;
-  background: white;
+  background: ${({theme}) => theme.colors.grayMedium};
   padding: 6px 12px;
   justify-content: row;
 `;
@@ -16,7 +15,7 @@ export const Input = styled.TextInput`
   font-size: 12px;
   font-family: 'Roboto-medium';
   align-self: flex-end;
-  color: ${colors.text.grayMedium};
+  color: ${({theme}) => theme.colors.clean};
 `;
 
 export const Image = styled.Image`

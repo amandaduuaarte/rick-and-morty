@@ -1,22 +1,17 @@
-import {DefaultTheme} from 'styled-components';
+import {DefaultTheme} from 'styled-components/native';
 
 export const darkTheme: DefaultTheme = {
   colors: {
-    background: {
-      black: '#000000',
-      grayExtraDark: '#1E1E1E',
-      grayDark: '#64676D',
-      blueLight: '#295268',
-    },
-    text: {
-      white: '#FFFFFF',
-      grayLight: '#747476',
-      grayMedium: '#B5B9C4',
-    },
-    cardBackgrounds: {
-      alive: '#5E995E',
-      unknown: '#295268',
-      dead: '#4D4C55',
-    },
+    clean: '#FFFFFF',
+    black: '#000000',
+    grayExtraLight: '#191D23',
+    grayLightPrimary: '#0D0F11',
+    blueDark: '#295268',
+    grayLightSecondary: '#262C36',
+    grayMedium: '#B5B9C4',
+    alive: '#47A785',
+    unknown: '#7B57E0',
+    dead: '#4D4C55',
+    primary: '#191D23',
   },
 };

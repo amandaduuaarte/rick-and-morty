@@ -1,6 +1,6 @@
 import React, {createContext, useState} from 'react';
 
-import {ThemeProvider as ThemeProviderStyled} from 'styled-components';
+import {ThemeProvider as ThemeProviderStyled} from 'styled-components/native';
 import {darkTheme} from './darkTheme';
 import {lightTheme} from './lightTheme';
 import {ChildrenDefaultProps} from '../models/children';
@@ -9,6 +9,7 @@ export enum ThemeType {
   light = 'light',
   dark = 'dark',
 }
+
 const themes = {
   light: lightTheme,
   dark: darkTheme,

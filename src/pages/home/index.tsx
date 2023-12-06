@@ -13,7 +13,7 @@ import {
 import {Card, Loading, TextField, Toggle} from '../../components';
 import {useCharacters} from '../../hooks/useCharacters';
 import {Characters} from '../../models/characters';
-import {ThemeContext, ThemeType} from '../../theme/theme';
+import {ThemeContext, ThemeType} from '../../theme/Theme';
 
 export const Home: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -65,9 +65,6 @@ export const Home: React.FC = () => {
     );
   };
   return (
-    // Criar theme dark and light https://github.com/LucasGarcez/weather-app/tree/main
-    // Criar uma pasta models para colocar as typagens
-    // Adicionar alguns testes (hooks, components(2), )
     <Container>
       <SafeAreaView>
         <PaginationContainer>
@@ -106,15 +103,6 @@ export const Home: React.FC = () => {
           </Content>
         )}
       </Content>
-      {/* <PaginationContainer>
-        <PageContainer onPress={() => handlePagination(page - 1)} />
-        <PageContainer onPress={() => handlePagination(1)} isActive>
-          <Page size={12} isActive>
-            {page <= 1 ? '1' : page}
-          </Page>
-        </PageContainer>
-        <PageContainer onPress={() => handlePagination(page + 1)} />
-      </PaginationContainer> */}
     </Container>
   );
 };
