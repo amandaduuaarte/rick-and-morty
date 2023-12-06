@@ -14,7 +14,6 @@ interface PaginationContainerProps {
 export const Container = styled.View`
   flex: 1;
   padding: 24px;
-  margin-top: 32px;
   background-color: ${({theme}) => theme.colors.primary};
 `;
 
