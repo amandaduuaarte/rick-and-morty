@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-import {colors} from '../../utils/colors';
 
 interface ContainerProp {
   backgroundColor?: string;
@@ -62,7 +61,7 @@ export const Content = styled.ScrollView`
   width: 100%;
   height: 80%;
   padding: 24px;
-  background: ${colors.background.white};
+  background: ${({theme}) => theme.colors.clean};
   align-self: flex-end;
   border-radius: 32px;
 `;

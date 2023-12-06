@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-import {colors} from '../../utils/colors';
 import {Dimensions} from 'react-native';
 
 const {height} = Dimensions.get('window');
@@ -48,7 +47,7 @@ export const PaginationContainer = styled.View`
 export const PageContainer = styled.TouchableOpacity<PaginationContainerProps>`
   height: 32px;
   width: 32px;
-  border: 2px solid ${colors.cardBackgrounds.unknown};
+  border: 2px solid ${({theme}) => theme.colors.unknown};
   border-radius: 16px;
   justify-content: center;
   align-items: center;

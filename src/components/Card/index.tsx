@@ -9,10 +9,11 @@ import {
 } from './styles';
 import {CharacterType} from '../CharacterType';
 import {useNavigation} from '../../hooks/useNavigation';
-import {colors} from '../../utils/colors';
+
 import {useCharacters} from '../../hooks/useCharacters';
 import {Loading} from '../Loading';
 import {Character} from '../../models/characters';
+import {useTheme} from 'styled-components/native';
 
 interface CardProps {
   data: Character;
@@ -21,6 +22,7 @@ export const Card: React.FC<CardProps> = React.memo(({data}) => {
   const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
   const {getOneCharacter} = useCharacters();
+  const {colors} = useTheme();
   const {id, gender, image, location, name, status} = data;
   const handleCharacter = useCallback(async () => {
     setLoading(true);
@@ -29,16 +31,13 @@ export const Card: React.FC<CardProps> = React.memo(({data}) => {
     if (character) {
       const characterDetails = {
         ...character,
-        color:
-          character.status === 'Alive'
-            ? colors.cardBackgrounds.alive
-            : colors.cardBackgrounds.dead,
+        color: character.status === 'Alive' ? colors.alive : colors.dead,
       };
 
       navigation.navigate('Details', {character: characterDetails});
       setLoading(false);
     }
-  }, [getOneCharacter, id, navigation]);
+  }, [colors, getOneCharacter, id, navigation]);
 
   return (
     <>
