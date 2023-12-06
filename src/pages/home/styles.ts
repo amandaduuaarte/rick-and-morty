@@ -21,13 +21,13 @@ export const Container = styled.View`
 export const Title = styled.Text`
   font-size: 24px;
   font-family: 'Roboto-bold';
-  color: ${colors.text.black};
+  color: ${({theme}) => theme.colors.black};
 `;
 
 export const Description = styled.Text<DescriptionProps>`
   font-size: ${({size}) => size || 16}px;
   font-family: 'Roboto-regular';
-  color: ${colors.text.grayMedium};
+  color: ${({theme}) => theme.colors.grayMedium};
   margin: 12px 0;
 `;
 
@@ -52,13 +52,13 @@ export const PageContainer = styled.TouchableOpacity<PaginationContainerProps>`
   border-radius: 16px;
   justify-content: center;
   align-items: center;
-  background: ${({isActive}) =>
-    isActive ? colors.cardBackgrounds.unknown : 'transparent'};
+  background: ${({theme, isActive}) =>
+    isActive ? theme.colors.unknown : 'transparent'};
 `;
 
 export const Page = styled.Text<DescriptionProps>`
   font-size: ${({size}) => size || 16}px;
   font-family: 'Roboto-regular';
-  color: ${({isActive}) =>
-    isActive ? colors.text.white : colors.text.grayMedium};
+  color: ${({theme, isActive}) =>
+    isActive ? theme.colors.clean : theme.colors.grayMedium};
 `;

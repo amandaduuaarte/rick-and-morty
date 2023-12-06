@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-import {colors} from '../../utils/colors';
 interface ContainerProps {
   status: string;
 }
@@ -7,10 +6,8 @@ interface ContainerProps {
 export const Container = styled.View<ContainerProps>`
   height: 40px;
   width: 80px;
-  background: ${({status}) =>
-    status === 'Alive'
-      ? colors.cardBackgrounds.unknown
-      : colors.cardBackgrounds.alive};
+  background: ${({theme, status}) =>
+    status === 'Alive' ? theme.colors.unknown : theme.colors.alive};
   border-radius: 8px;
   padding: 6px;
   flex-direction: row;
@@ -19,7 +16,7 @@ export const Container = styled.View<ContainerProps>`
 `;
 
 export const Text = styled.Text`
-  color: ${colors.background.white};
+  color: ${({theme}) => theme.colors.clean};
   font-size: 16px;
   font-family: 'Roboto-bold';
 `;

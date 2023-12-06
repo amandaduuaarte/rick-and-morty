@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-import {colors} from '../../utils/colors';
 
 export const Container = styled.View`
   height: 45px;
@@ -16,7 +15,7 @@ export const Input = styled.TextInput`
   font-size: 12px;
   font-family: 'Roboto-medium';
   align-self: flex-end;
-  color: ${colors.text.grayMedium};
+  color: ${({theme}) => theme.colors.grayMedium};
 `;
 
 export const Image = styled.Image`

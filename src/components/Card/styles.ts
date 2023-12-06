@@ -1,15 +1,12 @@
 import styled from 'styled-components/native';
-import {colors} from '../../utils/colors';
 interface ContainerProps {
   status: string;
 }
 export const Container = styled.TouchableOpacity<ContainerProps>`
   height: 132px;
   width: auto;
-  background: ${({status}) =>
-    status === 'Alive'
-      ? colors.cardBackgrounds.alive
-      : colors.cardBackgrounds.dead};
+  background: ${({theme, status}) =>
+    status === 'Alive' ? theme.colors.alive : theme.colors.dead};
   border-radius: 12px;
   flex-direction: row;
   padding: 12px 16px;
@@ -33,7 +30,7 @@ export const TypeCharacterContainer = styled.View`
 export const NameCharacter = styled.Text`
   font-size: 24px;
   font-family: 'Roboto-bold';
-  color: ${colors.background.white};
+  color: ${({theme}) => theme.colors.clean};
 `;
 
 export const Description = styled(NameCharacter)`

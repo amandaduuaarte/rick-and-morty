@@ -1,18 +1,17 @@
 import React from 'react';
 import {Container} from './styles';
 import {ActivityIndicator} from 'react-native';
-import {colors} from '../../utils/colors';
+
+import {useTheme} from 'styled-components';
 
 interface LoadingProps {
   color?: string;
 }
 export const Loading: React.FC<LoadingProps> = ({color}) => {
+  const {colors} = useTheme();
   return (
     <Container>
-      <ActivityIndicator
-        size="large"
-        color={color ? color : colors.background.blueDark}
-      />
+      <ActivityIndicator size="large" color={color ? color : colors.blueDark} />
     </Container>
   );
 };

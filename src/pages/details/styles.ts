@@ -12,7 +12,8 @@ interface DescriptionProps {
 
 export const Container = styled.View<ContainerProp>`
   flex: 1;
-  background: ${({backgroundColor}) => backgroundColor || 'red'};
+  background: ${({backgroundColor, theme}) =>
+    backgroundColor || theme.colors.clean};
 `;
 
 export const BackContainer = styled.Pressable``;
@@ -69,7 +70,7 @@ export const Content = styled.ScrollView`
 export const Description = styled.Text<DescriptionProps>`
   font-size: ${({size}) => size || 16}px;
   font-family: ${({bold}) => (bold ? 'Roboto-bold' : 'Roboto-regular')};
-  color: ${({color}) => color || colors.text.grayMedium};
+  color: ${({theme, color}) => color || theme.colors.grayMedium};
 `;
 
 export const Topics = styled.View`
