@@ -9,4 +9,5 @@ export interface ColorsType {
   alive: string;
   unknown: string;
   dead: string;
+  primary: string;
 }

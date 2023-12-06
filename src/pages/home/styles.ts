@@ -15,12 +15,13 @@ export const Container = styled.View`
   flex: 1;
   padding: 24px;
   margin-top: 32px;
+  background-color: ${({theme}) => theme.colors.primary};
 `;
 
 export const Title = styled.Text`
   font-size: 24px;
   font-family: 'Roboto-bold';
-  color: ${({theme}) => theme.colors.black};
+  color: ${({theme}) => theme.colors.unknown};
 `;
 
 export const Description = styled.Text<DescriptionProps>`

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Container, Input} from './styles';
+import {useTheme} from 'styled-components/native';
 
 interface TextFieldProps {
   placeholder: string;
@@ -11,9 +12,15 @@ export const TextField: React.FC<TextFieldProps> = ({
   value,
   callBack,
 }) => {
+  const {colors} = useTheme();
   return (
     <Container>
-      <Input placeholder={placeholder} onChangeText={callBack} value={value} />
+      <Input
+        placeholder={placeholder}
+        onChangeText={callBack}
+        value={value}
+        placeholderTextColor={colors.clean}
+      />
     </Container>
   );
 };

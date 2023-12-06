@@ -12,7 +12,7 @@ interface DescriptionProps {
 export const Container = styled.View<ContainerProp>`
   flex: 1;
   background: ${({backgroundColor, theme}) =>
-    backgroundColor || theme.colors.clean};
+    backgroundColor || theme.colors.primary};
 `;
 
 export const BackContainer = styled.Pressable``;
@@ -61,7 +61,7 @@ export const Content = styled.ScrollView`
   width: 100%;
   height: 80%;
   padding: 24px;
-  background: ${({theme}) => theme.colors.clean};
+  background: ${({theme}) => theme.colors.grayExtraLight};
   align-self: flex-end;
   border-radius: 32px;
 `;

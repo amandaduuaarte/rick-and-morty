@@ -44,11 +44,7 @@ export const Card: React.FC<CardProps> = React.memo(({data}) => {
       <Container status={status} onPress={() => handleCharacter()}>
         {loading ? (
           <Loading
-            color={
-              status === 'Alive'
-                ? colors.background.blueDark
-                : colors.cardBackgrounds.alive
-            }
+            color={status === 'Alive' ? colors.blueDark : colors.alive}
           />
         ) : (
           <>
