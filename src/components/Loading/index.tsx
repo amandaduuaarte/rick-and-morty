@@ -2,7 +2,7 @@ import React from 'react';
 import {Container} from './styles';
 import {ActivityIndicator} from 'react-native';
 
-import {useTheme} from 'styled-components';
+import {useTheme} from 'styled-components/native';
 
 interface LoadingProps {
   color?: string;
