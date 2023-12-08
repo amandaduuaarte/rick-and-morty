@@ -11,7 +11,7 @@ export const CharacterType: React.FC<CharacterTypeProps> = ({
 }) => {
   return (
     <>
-      <Container status={status}>
+      <Container status={status} testID="characterStatus">
         <Text>{label}</Text>
       </Container>
     </>

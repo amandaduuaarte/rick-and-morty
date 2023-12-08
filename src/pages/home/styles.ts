@@ -7,10 +7,6 @@ interface DescriptionProps {
   isActive?: boolean;
 }
 
-interface PaginationContainerProps {
-  isActive?: boolean;
-}
-
 export const Container = styled.View`
   flex: 1;
   padding: 24px;
@@ -42,22 +38,4 @@ export const PaginationContainer = styled.View`
   align-items: center;
   flex-direction: row;
   gap: 16px;
-`;
-
-export const PageContainer = styled.TouchableOpacity<PaginationContainerProps>`
-  height: 32px;
-  width: 32px;
-  border: 2px solid ${({theme}) => theme.colors.unknown};
-  border-radius: 16px;
-  justify-content: center;
-  align-items: center;
-  background: ${({theme, isActive}) =>
-    isActive ? theme.colors.unknown : 'transparent'};
-`;
-
-export const Page = styled.Text<DescriptionProps>`
-  font-size: ${({size}) => size || 16}px;
-  font-family: 'Roboto-regular';
-  color: ${({theme, isActive}) =>
-    isActive ? theme.colors.clean : theme.colors.grayMedium};
 `;
