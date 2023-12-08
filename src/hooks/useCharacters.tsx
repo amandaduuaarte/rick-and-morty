@@ -15,6 +15,7 @@ interface CharacterContextData {
   getOneCharacter(id: string): Promise<CharacterDetails>;
   getCharacterByName(name: string): Promise<Characters | undefined>;
   handleMoreCharacters(pageNumber: number): void;
+  hasListFinish: boolean;
 }
 
 const CharacterContext = createContext<CharacterContextData>(
@@ -22,7 +23,8 @@ const CharacterContext = createContext<CharacterContextData>(
 );
 
 const CharacterProvider: React.FC<ChildrenDefaultProps> = ({children}) => {
-  const [allCharacters, setAllCharacters] = useState<Characters>();
+  const [allCharacters, setAllCharacters] = useState<Characters>([]);
+  const [hasListFinish, setHasListFinish] = useState(false);
 
   const {data: queryCharacters} = useQuery(ALL_CHARACTERS, {
     variables: {page: 1},
@@ -58,7 +60,10 @@ const CharacterProvider: React.FC<ChildrenDefaultProps> = ({children}) => {
         query: ALL_CHARACTERS,
         variables: {page: pageNumber},
       });
-      setAllCharacters(data.characters.results);
+      setAllCharacters(prev => [...prev, ...data.characters.results]);
+      if (!data?.info.next) {
+        setHasListFinish(true);
+      }
     },
     [client],
   );
@@ -72,6 +77,7 @@ const CharacterProvider: React.FC<ChildrenDefaultProps> = ({children}) => {
   return (
     <CharacterContext.Provider
       value={{
+        hasListFinish,
         allCharacters,
         getOneCharacter,
         getCharacterByName,

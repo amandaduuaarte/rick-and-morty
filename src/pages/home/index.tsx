@@ -5,8 +5,6 @@ import {
   Container,
   Content,
   Description,
-  Page,
-  PageContainer,
   PaginationContainer,
   Title,
 } from './styles';
@@ -21,8 +19,12 @@ export const Home: React.FC = () => {
   const [page, setPage] = useState(1);
   const {toggleTheme, theme} = useContext(ThemeContext);
   const isDarkTheme = theme === ThemeType.dark;
-  const {allCharacters, getCharacterByName, handleMoreCharacters} =
-    useCharacters();
+  const {
+    allCharacters,
+    getCharacterByName,
+    handleMoreCharacters,
+    hasListFinish,
+  } = useCharacters();
   const [charactersFilter, setCharactersFilter] = useState<
     Characters | undefined
   >();
@@ -42,28 +44,12 @@ export const Home: React.FC = () => {
   );
 
   const handlePagination = async (pageValue: number) => {
-    setLoading(true);
-    try {
-      setPage(pageValue < 1 ? 1 : pageValue);
-      await handleMoreCharacters(pageValue);
-    } finally {
-      setLoading(false);
+    if (!hasListFinish) {
+      handleMoreCharacters(pageValue);
+      setPage(pageValue + 1);
     }
   };
 
-  const renderFooder = (): JSX.Element => {
-    return (
-      <PaginationContainer>
-        <PageContainer onPress={() => handlePagination(page - 1)} />
-        <PageContainer onPress={() => handlePagination(1)} isActive>
-          <Page size={12} isActive>
-            {page <= 1 ? '1' : page}
-          </Page>
-        </PageContainer>
-        <PageContainer onPress={() => handlePagination(page + 1)} />
-      </PaginationContainer>
-    );
-  };
   return (
     <Container>
       <SafeAreaView>
@@ -95,7 +81,8 @@ export const Home: React.FC = () => {
             }
             renderItem={({item}) => <Card key={item.id} data={item} />}
             keyExtractor={item => item.id + Math.random()}
-            ListFooterComponent={renderFooder}
+            ListFooterComponent={!hasListFinish ? <Loading /> : null}
+            onEndReached={() => handlePagination(page)}
           />
         ) : (
           <Content>
