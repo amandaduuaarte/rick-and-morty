@@ -52,12 +52,16 @@ Este é um aplicativo móvel desenvolvido em React Native que utiliza a API Grap
 - Episódios
 Lista de episódios de acordo com o personagem
 
+### Estão sendo implementadas: 
+   * Testes unitários nos components.
 
 ### Tecnologias Utilizadas
   * React Native
   * Apollo Client para GraphQL
   * Styled Components para estilização  
   * React Navigation para navegação entre telas
+  * Husky e CommitLint
+  * Jest e React Native Testing Library
 
 ### Estrutura do projeto e decisoes tomadas:
 [Estrutura](./STRUCTURE.md) aqui temos um compilado de informações que server como facilitador para quem deseja enteder a estrutura de pastas do projeto e algumas breves explicações de decisões tomadas durante o desenvolvimento.
