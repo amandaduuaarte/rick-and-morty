@@ -52,6 +52,8 @@ Este é um aplicativo móvel desenvolvido em React Native que utiliza a API Grap
 - Episódios
 Lista de episódios de acordo com o personagem
 
+### Estão sendo implementadas: 
+   * Testes unitários nos components.
 
 ### Tecnologias Utilizadas
   * React Native

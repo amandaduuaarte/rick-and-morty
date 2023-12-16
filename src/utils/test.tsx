@@ -1,16 +1,54 @@
-import {render} from '@testing-library/react-native';
 import React, {ReactElement} from 'react';
-import {FC} from 'react';
+import {render, RenderOptions} from '@testing-library/react-native';
 import {ThemeProvider} from '../theme/Theme';
 import {ChildrenDefaultProps} from '../models/children';
+import {CharacterProvider} from '../hooks/useCharacters';
+import {MockedProvider} from '@apollo/client/testing';
+import {ALL_CHARACTERS} from '../queries';
+import {NavigationContainer} from '@react-navigation/native';
 
-type Options = Parameters<typeof render>[1];
+type Options = RenderOptions;
+
+const mocks: any = [
+  {
+    request: {
+      query: ALL_CHARACTERS,
+      variables: {
+        page: 1,
+      },
+    },
+    characters: {
+      info: {
+        count: 1,
+      },
+      results: [
+        {
+          id: '1',
+          name: 'Ants in my Eyes Johnson',
+          image: 'https://rickandmortyapi.com/api/character/avatar/20.jpeg',
+          status: 'Alive',
+          gender: 'Male',
+          species: 'Human',
+          location: {
+            name: 'Interdimensional Cable',
+          },
+        },
+      ],
+    },
+  },
+];
 
 const customRender = (ui: ReactElement, options?: Options) =>
   render(ui, {wrapper: AllTheProviders, ...options});
 
-const AllTheProviders: FC<ChildrenDefaultProps> = ({children}) => (
-  <ThemeProvider>{children}</ThemeProvider>
+const AllTheProviders: React.FC<ChildrenDefaultProps> = ({children}) => (
+  <NavigationContainer>
+    <MockedProvider mocks={mocks} addTypename={false}>
+      <CharacterProvider>
+        <ThemeProvider>{children}</ThemeProvider>
+      </CharacterProvider>
+    </MockedProvider>
+  </NavigationContainer>
 );
 
 export * from '@testing-library/react-native';

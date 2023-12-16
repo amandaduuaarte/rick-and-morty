@@ -41,7 +41,10 @@ export const Card: React.FC<CardProps> = React.memo(({data}) => {
 
   return (
     <>
-      <Container status={status} onPress={() => handleCharacter()}>
+      <Container
+        status={status}
+        onPress={() => handleCharacter()}
+        testID="CardContainer">
         {loading ? (
           <Loading
             color={status === 'Alive' ? colors.blueDark : colors.alive}
@@ -56,7 +59,11 @@ export const Card: React.FC<CardProps> = React.memo(({data}) => {
               </TypeCharacterContainer>
             </DescriptionContainer>
             <DescriptionContainer>
-              <ImageComponent source={{uri: image}} />
+              <ImageComponent
+                source={{uri: image}}
+                alt="characther_img"
+                accessibilityLabel="characther_image"
+              />
             </DescriptionContainer>
           </>
         )}

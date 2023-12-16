@@ -11,7 +11,8 @@ import {
 import {Card, Loading, TextField, Toggle} from '../../components';
 import {useCharacters} from '../../hooks/useCharacters';
 import {Characters} from '../../models/characters';
-import {ThemeContext, ThemeType} from '../../theme/Theme';
+import {ThemeContext} from '../../theme/Theme';
+import {ThemeType} from '../../models/theme';
 
 export const Home: React.FC = () => {
   const [loading, setLoading] = useState(false);
