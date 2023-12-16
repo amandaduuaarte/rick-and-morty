@@ -19,7 +19,6 @@ describe('Card', () => {
       const {debug} = render(<Card data={mock} />);
       debug();
     });
-    // ADD REACT MMKV para salvar o valor do tema e entender mais sobre a lib
 
     test('should render characterType component', () => {
       const {getByText} = render(<Card data={mock} />);
