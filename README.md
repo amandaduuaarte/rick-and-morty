@@ -1,8 +1,8 @@
 
+🇺🇸 [English](./README_ENGLISH.md)
 <div align="center">
 <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="ReactJS"> 
 <h2 align="center">Rick and Morty GraphQL App : </h2>
-[English](./README_ENGLISH.md)
 </div>
 Este é um aplicativo móvel desenvolvido em React Native que utiliza a API GraphQL do Rick and Morty para exibir informações sobre personagens, episódios e locais da série.
 
