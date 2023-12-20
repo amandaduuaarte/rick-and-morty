@@ -1,7 +1,7 @@
 <div align="center">
 <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="ReactJS"> 
 <h2 align="center">Rick and Morty GraphQL App : </h2>
-[English](./README_ENGLISH.md)
+
 </div>
 This is a simple mobile application built using React Native and TypeScript using GraphQL, your go is show informations about Rick and Morty Characters.
 
@@ -65,7 +65,7 @@ This is a simple mobile application built using React Native and TypeScript usin
   * React Native MMKV - For storage control.
 
 ### Project Structure and Decisions Made:
-[Estrutura](./STRUCTURE.md) Here's a compiled set of information that serves as a guide for understanding the project's folder structure and brief explanations of decisions made during development.
+[TechGuide](./STRUCTURE_ENGLISH.md) Here's a compiled set of information that serves as a guide for understanding the project's folder structure and brief explanations of decisions made during development.
 
 ### Contributions
 Contributions are welcome! Feel free to open an issue or submit a pull request for code improvements, new features, or bug fixes.
