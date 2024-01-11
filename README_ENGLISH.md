@@ -8,20 +8,20 @@ This is a simple mobile application built using React Native and TypeScript usin
 ## About Project: 
 
 <div align="center">
-<img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/homeAndroidDark.png" alt="androidScreen" height="400px"> 
-   <img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/homeIosDark.png" alt="iosScreen" height="400px"> 
+<img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/screens/homeAndroidDark.png" alt="androidScreen" height="400px"> 
+   <img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/screens/homeIosDark.png" alt="iosScreen" height="400px"> 
 <p align="center">Screens</p>
 </div>
 
 <div align="center">
-<img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/homeAndroidLight.png" alt="androidScreen" height="400px"> 
-   <img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/homeIosLight.png" alt="iosScreen" height="400px"> 
+<img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/screens/homeAndroidLight.png" alt="androidScreen" height="400px"> 
+   <img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/screens/homeIosLight.png" alt="iosScreen" height="400px"> 
 <p align="center">Screens</p>
 </div>
 
 <div align="center">
-<img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/details.png" alt="androidScreen" height="400px"> 
-   <img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/detailsDark.png" alt="iosScreen" height="400px"> 
+<img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/screens/details.png" alt="androidScreen" height="400px"> 
+   <img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/screens/detailsDark.png" alt="iosScreen" height="400px"> 
 <p align="center">Screens</p>
 </div>
 
@@ -70,7 +70,7 @@ This is a simple mobile application built using React Native and TypeScript usin
 ### Contributions
 Contributions are welcome! Feel free to open an issue or submit a pull request for code improvements, new features, or bug fixes.
 
-Autores
-Seu Nome (@amandaduuaarte)
+### Autores
+Amanda Duarte (@amandaduuaarte)
 Licença
 Este projeto está sob a licença [MIT].

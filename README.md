@@ -9,20 +9,20 @@ Este é um aplicativo móvel desenvolvido em React Native que utiliza a API Grap
 ## Sobre o projeto: 
 
 <div align="center">
-<img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/homeAndroidDark.png" alt="androidScreen" height="400px"> 
-   <img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/homeIosDark.png" alt="iosScreen" height="400px"> 
+<img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/screens/homeAndroidDark.png" alt="androidScreen" height="400px"> 
+   <img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/screens/homeIosDark.png" alt="iosScreen" height="400px"> 
 <p align="center">Screens</p>
 </div>
 
 <div align="center">
-<img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/homeAndroidLight.png" alt="androidScreen" height="400px"> 
-   <img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/homeIosLight.png" alt="iosScreen" height="400px"> 
+<img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/screens/homeAndroidLight.png" alt="androidScreen" height="400px"> 
+   <img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/screens/homeIosLight.png" alt="iosScreen" height="400px"> 
 <p align="center">Screens</p>
 </div>
 
 <div align="center">
-<img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/details.png" alt="androidScreen" height="400px"> 
-   <img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/detailsDark.png" alt="iosScreen" height="400px"> 
+<img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/screens/details.png" alt="androidScreen" height="400px"> 
+   <img src="https://github.com/amandaduuaarte/rick-and-morty/blob/develop/screens/detailsDark.png" alt="iosScreen" height="400px"> 
 <p align="center">Screens</p>
 </div>
 
@@ -71,7 +71,7 @@ Lista de episódios de acordo com o personagem
 ### Contribuição
 Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request para melhorias no código, novas funcionalidades ou correções de bugs.
 
-Autores
-Seu Nome (@amandaduuaarte)
+### Autores
+Amanda Duarte (@amandaduuaarte)
 Licença
 Este projeto está sob a licença [MIT].
