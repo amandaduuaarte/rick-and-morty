@@ -39,8 +39,6 @@ export const Home: React.FC = () => {
   );
 
   const handlePagination = async (pageValue: number) => {
-    console.log('handlePagination', !hasListFinish);
-
     if (!hasListFinish) {
       handleMoreCharacters(pageValue);
       setPage(pageValue + 1);

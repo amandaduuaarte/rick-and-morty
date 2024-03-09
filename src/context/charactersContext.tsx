@@ -67,8 +67,6 @@ export const CharacterProvider: React.FC<ChildrenDefaultProps> = ({
       });
       setAllCharacters(prev => [...prev, ...data.characters.results]);
 
-      console.log('handleMoreCharacters', data?.info?.next);
-
       if (data?.info?.next) {
         setHasListFinish(false);
       }
