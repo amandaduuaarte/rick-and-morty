@@ -10,7 +10,7 @@ import {ALL_CHARACTERS, ONE_CHARACTER, ONE_CHARACTER_BY_NAME} from '../queries';
 import {CharacterDetails, Characters} from '../models/characters';
 import {ChildrenDefaultProps} from '../models/children';
 
-interface CharacterContextData {
+export interface CharacterContextData {
   allCharacters: Characters | undefined;
   filterCharacters: Characters | undefined;
   getOneCharacter(id: string): Promise<CharacterDetails>;
@@ -19,11 +19,13 @@ interface CharacterContextData {
   hasListFinish: boolean;
 }
 
-const CharacterContext = createContext<CharacterContextData>(
+export const CharacterContext = createContext<CharacterContextData>(
   {} as CharacterContextData,
 );
 
-const CharacterProvider: React.FC<ChildrenDefaultProps> = ({children}) => {
+export const CharacterProvider: React.FC<ChildrenDefaultProps> = ({
+  children,
+}) => {
   const [allCharacters, setAllCharacters] = useState<Characters>([]);
   const [hasListFinish, setHasListFinish] = useState(false);
   const [filterCharacters, setFilterCharacters] = useState();
@@ -104,4 +106,4 @@ function useCharacters(): CharacterContextData {
   return context;
 }
 
-export {CharacterProvider, useCharacters};
+export {useCharacters};

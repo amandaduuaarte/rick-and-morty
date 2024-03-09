@@ -9,10 +9,10 @@ import {
   Title,
 } from './styles';
 import {Card, Loading, NotFound, TextField, Toggle} from '../../components';
-import {useCharacters} from '../../context/charactersContext';
 
 import {ThemeContext} from '../../theme/Theme';
 import {ThemeType} from '../../models/theme';
+import {useCharacters} from '../../context/charactersContext';
 
 export const Home: React.FC = () => {
   const [value, setValue] = useState<string>('');
