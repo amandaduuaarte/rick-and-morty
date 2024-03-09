@@ -4,7 +4,7 @@ import React from 'react';
 import {client} from './service/apolloClient';
 
 import {Routes} from './routes/app.routes';
-import {CharacterProvider} from './hooks/useCharacters';
+import {CharacterProvider} from './context/charactersContext';
 import {ThemeProvider} from './theme/Theme';
 
 function App(): JSX.Element {

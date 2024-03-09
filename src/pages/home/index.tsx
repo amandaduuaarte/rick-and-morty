@@ -9,7 +9,7 @@ import {
   Title,
 } from './styles';
 import {Card, Loading, NotFound, TextField, Toggle} from '../../components';
-import {useCharacters} from '../../hooks/useCharacters';
+import {useCharacters} from '../../context/charactersContext';
 
 import {ThemeContext} from '../../theme/Theme';
 import {ThemeType} from '../../models/theme';

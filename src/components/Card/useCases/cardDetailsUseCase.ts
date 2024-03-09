@@ -1,5 +1,5 @@
 import {useCallback} from 'react';
-import {useCharacters} from '../../../hooks/useCharacters';
+import {useCharacters} from '../../../context/charactersContext';
 
 interface IcardDetailsUseCase {
   handleCharacterDetails: (id: string) => Promise<{}>;
