@@ -8,47 +8,54 @@ import {
   PaginationContainer,
   Title,
 } from './styles';
-import {Card, Loading, TextField, Toggle} from '../../components';
+import {Card, Loading, NotFound, TextField, Toggle} from '../../components';
 import {useCharacters} from '../../hooks/useCharacters';
-import {Characters} from '../../models/characters';
+
 import {ThemeContext} from '../../theme/Theme';
 import {ThemeType} from '../../models/theme';
 
 export const Home: React.FC = () => {
-  const [loading, setLoading] = useState(false);
   const [value, setValue] = useState<string>('');
   const [page, setPage] = useState(1);
+
   const {toggleTheme, theme} = useContext(ThemeContext);
   const isDarkTheme = theme === ThemeType.dark;
+
   const {
     allCharacters,
     getCharacterByName,
     handleMoreCharacters,
     hasListFinish,
+    filterCharacters,
   } = useCharacters();
-  const [charactersFilter, setCharactersFilter] = useState<
-    Characters | undefined
-  >();
 
   const handleSearch = useCallback(
     async (e: string) => {
       setValue(e);
-      setLoading(true);
 
-      const data = await getCharacterByName(e);
-      if (data) {
-        setLoading(false);
-        setCharactersFilter(data);
-      }
+      await getCharacterByName(e);
     },
     [getCharacterByName],
   );
 
   const handlePagination = async (pageValue: number) => {
+    console.log('handlePagination', !hasListFinish);
+
     if (!hasListFinish) {
       handleMoreCharacters(pageValue);
       setPage(pageValue + 1);
     }
+  };
+
+  const renderLoadingComponent = (isLoading: boolean) => {
+    if (isLoading) {
+      return (
+        <Content>
+          <Loading />
+        </Content>
+      );
+    }
+    return null;
   };
 
   return (
@@ -58,37 +65,31 @@ export const Home: React.FC = () => {
           <Title>Rick And Morty</Title>
           <Toggle callback={toggleTheme} value={isDarkTheme} />
         </PaginationContainer>
+
         <Description>
-          App for see more about Rick and Morty characthers
+          App for see more about Rick and Morty characters
         </Description>
         <TextField
-          placeholder="What character you loking for?"
+          placeholder="What character you looking for?"
           callBack={e => handleSearch(e)}
           value={value}
         />
       </SafeAreaView>
+
       <Content>
-        {allCharacters && !loading ? (
+        {allCharacters ? (
           <FlatList
             showsVerticalScrollIndicator={false}
             onEndReachedThreshold={0.1}
-            data={charactersFilter ? charactersFilter : allCharacters}
-            ListEmptyComponent={
-              loading ? (
-                <Content>
-                  <Loading />
-                </Content>
-              ) : null
-            }
+            data={filterCharacters ? filterCharacters : allCharacters}
+            ListEmptyComponent={hasListFinish ? <NotFound /> : <Loading />}
             renderItem={({item}) => <Card key={item.id} data={item} />}
             keyExtractor={item => item.id + Math.random()}
-            ListFooterComponent={!hasListFinish ? <Loading /> : null}
+            ListFooterComponent={hasListFinish ? null : <Loading />}
             onEndReached={() => handlePagination(page)}
           />
         ) : (
-          <Content>
-            <Loading />
-          </Content>
+          renderLoadingComponent(true)
         )}
       </Content>
     </Container>
