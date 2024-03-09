@@ -1,5 +1,5 @@
 import React from 'react';
-import {render} from '../../../utils/test';
+import {render} from '../../../test/test';
 import {Loading} from '../index';
 
 describe('Loading Component', () => {

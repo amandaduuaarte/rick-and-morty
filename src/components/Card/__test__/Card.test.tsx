@@ -1,5 +1,5 @@
 import React from 'react';
-import {render} from '../../../utils/test';
+import {render} from '../../../test/test';
 import {act, fireEvent, renderHook} from '@testing-library/react-native';
 import {Card} from '..';
 import {cardDetailsUseCase} from '../useCases/cardDetailsUseCase';
