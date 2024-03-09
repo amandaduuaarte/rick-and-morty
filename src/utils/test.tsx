@@ -6,6 +6,7 @@ import {CharacterProvider} from '../hooks/useCharacters';
 import {MockedProvider} from '@apollo/client/testing';
 import {ALL_CHARACTERS} from '../queries';
 import {NavigationContainer} from '@react-navigation/native';
+import {ThemeConsumer} from 'styled-components';
 
 type Options = RenderOptions;
 

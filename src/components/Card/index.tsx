@@ -10,10 +10,11 @@ import {
 import {CharacterType} from '../CharacterType';
 import {useNavigation} from '../../hooks/useNavigation';
 
-import {useCharacters} from '../../hooks/useCharacters';
 import {Loading} from '../Loading';
 import {Character} from '../../models/characters';
 import {useTheme} from 'styled-components/native';
+import {View} from 'react-native';
+import {cardDetailsUseCase} from './useCases/cardDetailsUseCase';
 
 interface CardProps {
   data: Character;
@@ -21,26 +22,26 @@ interface CardProps {
 export const Card: React.FC<CardProps> = React.memo(({data}) => {
   const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
-  const {getOneCharacter} = useCharacters();
   const {colors} = useTheme();
+  const {handleCharacterDetails} = cardDetailsUseCase({
+    alive: colors.alive,
+    dead: colors.dead,
+  });
   const {id, gender, image, location, name, status} = data;
   const handleCharacter = useCallback(async () => {
     setLoading(true);
-    const character = await getOneCharacter(id);
+
+    const character = await handleCharacterDetails(id);
+    // const character = await getOneCharacter(id);
 
     if (character) {
-      const characterDetails = {
-        ...character,
-        color: character.status === 'Alive' ? colors.alive : colors.dead,
-      };
-
-      navigation.navigate('Details', {character: characterDetails});
+      navigation.navigate('Details', {character});
       setLoading(false);
     }
-  }, [colors, getOneCharacter, id, navigation]);
+  }, [handleCharacterDetails, id, navigation]);
 
   return (
-    <>
+    <View>
       <Container
         status={status}
         onPress={() => handleCharacter()}
@@ -52,14 +53,17 @@ export const Card: React.FC<CardProps> = React.memo(({data}) => {
         ) : (
           <>
             <DescriptionContainer>
-              <NameCharacter>{name}</NameCharacter>
-              <Description>{location.name}</Description>
-              <TypeCharacterContainer>
+              <NameCharacter accessibilityLabel="name">{name}</NameCharacter>
+              <Description accessibilityLabel="location">
+                {location.name}
+              </Description>
+              <TypeCharacterContainer testID="gender">
                 {gender && <CharacterType status={status} label={gender} />}
               </TypeCharacterContainer>
             </DescriptionContainer>
             <DescriptionContainer>
               <ImageComponent
+                testID="img"
                 source={{uri: image}}
                 alt="characther_img"
                 accessibilityLabel="characther_image"
@@ -68,6 +72,6 @@ export const Card: React.FC<CardProps> = React.memo(({data}) => {
           </>
         )}
       </Container>
-    </>
+    </View>
   );
 });
