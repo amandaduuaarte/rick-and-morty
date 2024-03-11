@@ -10,7 +10,7 @@ interface LoadingProps {
 export const Loading: React.FC<LoadingProps> = ({color}) => {
   const {colors} = useTheme();
   return (
-    <Container>
+    <Container testID="loading">
       <ActivityIndicator size="large" color={color ? color : colors.blueDark} />
     </Container>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import {CharacterType} from '..';
-import {render} from '../../../utils/test';
+import {render} from '../../../test/test';
 
 describe('CharacterType', () => {
   describe('CharacterType Component Render', () => {

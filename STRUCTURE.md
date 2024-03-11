@@ -40,17 +40,6 @@ Algumas pastas como a `@types` são por si só explicativas não sendo necessár
         - `CharacterType`
     </br>
 
-- pages: 💻
-    -  Na application optei por concentrar todas as partes relacionadas a aplicação em si, como tratamentos de erros na `errors`, também adicionei os controllers dentro dessa camada nessa pasta de interface concentrei a parte de middlewares, controllers e outros tipos que uso no decorrer do código.
-    - Pretendo analisar melhor quais tipagens tenho na folder `interfaces` para que possa adicionar outras ou remover algumas. 
-    - application 
-        - `./controllers`
-        - `./interfaces`
-        - `./errors`
-        - `./utils`
-        - `./constants`
-    </br>
-
 - hooks: 👷‍♀️
     -  A pasta de hooks costumo deixar todos os contexts criados, nesse caso em especifico deixei o `useNavigation`, por uma necessidade de tratar types, e também o useCharacters.
     -  o `useCharacters` ficou responsável por realizar o tratamento das queries e também lidar com as fuções para get de personagens.

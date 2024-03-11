@@ -10,21 +10,25 @@ import {ALL_CHARACTERS, ONE_CHARACTER, ONE_CHARACTER_BY_NAME} from '../queries';
 import {CharacterDetails, Characters} from '../models/characters';
 import {ChildrenDefaultProps} from '../models/children';
 
-interface CharacterContextData {
+export interface CharacterContextData {
   allCharacters: Characters | undefined;
+  filterCharacters: Characters | undefined;
   getOneCharacter(id: string): Promise<CharacterDetails>;
-  getCharacterByName(name: string): Promise<Characters | undefined>;
+  getCharacterByName(name: string): Promise<void>;
   handleMoreCharacters(pageNumber: number): void;
   hasListFinish: boolean;
 }
 
-const CharacterContext = createContext<CharacterContextData>(
+export const CharacterContext = createContext<CharacterContextData>(
   {} as CharacterContextData,
 );
 
-const CharacterProvider: React.FC<ChildrenDefaultProps> = ({children}) => {
+export const CharacterProvider: React.FC<ChildrenDefaultProps> = ({
+  children,
+}) => {
   const [allCharacters, setAllCharacters] = useState<Characters>([]);
   const [hasListFinish, setHasListFinish] = useState(false);
+  const [filterCharacters, setFilterCharacters] = useState();
 
   const {data: queryCharacters} = useQuery(ALL_CHARACTERS, {
     variables: {page: 1},
@@ -48,8 +52,9 @@ const CharacterProvider: React.FC<ChildrenDefaultProps> = ({children}) => {
         query: ONE_CHARACTER_BY_NAME,
         variables: {name: name},
       });
+      setHasListFinish(true);
 
-      return data.characters.results;
+      setFilterCharacters(data?.characters?.results);
     },
     [client],
   );
@@ -61,8 +66,9 @@ const CharacterProvider: React.FC<ChildrenDefaultProps> = ({children}) => {
         variables: {page: pageNumber},
       });
       setAllCharacters(prev => [...prev, ...data.characters.results]);
-      if (!data?.info.next) {
-        setHasListFinish(true);
+
+      if (data?.info?.next) {
+        setHasListFinish(false);
       }
     },
     [client],
@@ -81,6 +87,7 @@ const CharacterProvider: React.FC<ChildrenDefaultProps> = ({children}) => {
         allCharacters,
         getOneCharacter,
         getCharacterByName,
+        filterCharacters,
         handleMoreCharacters,
       }}>
       {children}
@@ -97,4 +104,4 @@ function useCharacters(): CharacterContextData {
   return context;
 }
 
-export {CharacterProvider, useCharacters};
+export {useCharacters};

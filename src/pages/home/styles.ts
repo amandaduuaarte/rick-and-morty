@@ -28,7 +28,7 @@ export const Description = styled.Text<DescriptionProps>`
 
 export const Content = styled.View`
   margin: 24px 0;
-  height: ${height > 700 ? 70 : 55}%;
+  height: ${height > 700 ? 70 : 70}%;
 `;
 
 export const PaginationContainer = styled.View`
