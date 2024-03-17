@@ -5,7 +5,7 @@ import {darkTheme} from './darkTheme';
 import {lightTheme} from './lightTheme';
 import {ChildrenDefaultProps} from '../models/children';
 import {Storage} from '../service/storage';
-import {GetTheme, ThemeType} from '../models/theme';
+import {GetTheme, EThemeType} from '../models/theme';
 
 const themes = {
   light: lightTheme,
@@ -20,15 +20,15 @@ export const ThemeProvider: React.FunctionComponent<ChildrenDefaultProps> = ({
   children,
 }) => {
   const storageTheme = GetTheme('theme');
-  const [theme, setTheme] = useState<ThemeType>(storageTheme);
+  const [theme, setTheme] = useState<EThemeType>(storageTheme);
 
   function toggleTheme() {
-    if (theme === ThemeType.light) {
-      setTheme(ThemeType.dark);
-      Storage.set('theme', ThemeType.dark);
+    if (theme === EThemeType.light) {
+      setTheme(EThemeType.dark);
+      Storage.set('theme', EThemeType.dark);
     } else {
-      setTheme(ThemeType.light);
-      Storage.set('theme', ThemeType.light);
+      setTheme(EThemeType.light);
+      Storage.set('theme', EThemeType.light);
     }
   }
 

@@ -1,16 +1,16 @@
 import {Storage} from '../service/storage';
 
-export enum ThemeType {
+export enum EThemeType {
   light = 'light',
   dark = 'dark',
 }
 
-export const GetTheme = (name: string): ThemeType => {
+export const GetTheme = (name: string): EThemeType => {
   const theme = Storage.getString(name);
 
   if (theme === 'dark') {
-    return ThemeType.dark;
+    return EThemeType.dark;
   } else {
-    return ThemeType.light;
+    return EThemeType.light;
   }
 };

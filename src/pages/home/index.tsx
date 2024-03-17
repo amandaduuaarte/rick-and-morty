@@ -11,7 +11,7 @@ import {
 import {Card, Loading, NotFound, TextField, Toggle} from '../../components';
 
 import {ThemeContext} from '../../theme/Theme';
-import {ThemeType} from '../../models/theme';
+import {EThemeType} from '../../models/theme';
 import {useCharacters} from '../../context/charactersContext';
 
 export const Home: React.FC = () => {
@@ -19,7 +19,7 @@ export const Home: React.FC = () => {
   const [page, setPage] = useState(1);
 
   const {toggleTheme, theme} = useContext(ThemeContext);
-  const isDarkTheme = theme === ThemeType.dark;
+  const isDarkTheme = theme === EThemeType.dark;
 
   const {
     allCharacters,
